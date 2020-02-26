@@ -11,8 +11,9 @@ from sklearn.preprocessing import OneHotEncoder
 
 def select_feats():
     """
-    This function selects the relevant features and the y variable.
-    It also recodes some values for continuous/ordinal variables.
+    This function selects the relevant features and potential targets.
+    It also recodes some values for continuous/ordinal features to reflect
+    continuity.
     """
     path = '/Users/flatironschol/Blogs/Blog-3/parental-involvement-to-education'
     os.chdir(path)
@@ -61,8 +62,12 @@ def select_feats():
            parental_involvement_df, \
            X_cont_labels
 
-# Function to transform categorical variables
 def encoder_transform(encoder, X):
+    """
+    This function one-hot encodes categorical variables
+    using a previously fitted encoder. It returns formatted
+    column names for easier understanding.
+    """
     X_encoded = encoder.transform(X).toarray()
     encoded_feats = list(encoder.get_feature_names())
     feats = X.columns
