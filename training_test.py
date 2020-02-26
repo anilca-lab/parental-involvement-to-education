@@ -32,6 +32,10 @@ def calculate_vif(X, thresh = 5):
     return X.iloc[:, variables]
 
 def roc_plot(fpr, tpr):
+    """
+    This function plots the ROC curve for given true and false
+    positive rates.
+    """
     plt.figure(figsize=(10, 8))
     lw = 2
     plt.plot(fpr, tpr, color='darkorange',
